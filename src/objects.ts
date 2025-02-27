@@ -37,6 +37,7 @@ export function isCorrect(question: Question, answer: string): boolean {
     } else if (expect !== potential) {
         return false;
     }
+    return false;
 }
 
 /**
@@ -48,7 +49,7 @@ export function isCorrect(question: Question, answer: string): boolean {
 export function isValid(question: Question, answer: string): boolean {
     if (
         question.type === "short_answer_question" ||
-        question.options.includes(answer) === true
+        question.options.includes(answer)
     ) {
         return true;
     } else {
@@ -124,7 +125,7 @@ export function renameQuestion(question: Question, newName: string): Question {
  */
 export function publishQuestion(question: Question): Question {
     let newQuestion: Question = { ...question };
-    if (newQuestion.published == true) {
+    if (newQuestion.published) {
         newQuestion.published = false;
     } else {
         newQuestion.published = true;
